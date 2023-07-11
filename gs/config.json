@@ -1,0 +1,20 @@
+{
+    "tk_config" : 
+    {
+        "size" : "600x200",
+
+        "key_config" : 
+        {
+            "input_width" : 30,
+            "label_padx" : 10,
+            "label_pady" : 20
+        },
+        
+        "dir_config" : 
+        {
+            "input_width" : 30,
+            "label_padx" : 10,
+            "label_pady" : 20
+        }
+    }
+}

@@ -3,6 +3,8 @@ from model_controller import ModelController
 from gpt_thread import GptThread
 import threading
 import time
+from UI import UI
+import json
 
 
 
@@ -16,14 +18,20 @@ def main():
 
 if __name__ == "__main__":
     # tk
+    with open('./config.json') as ui_config_file:
+        ui_config = json.load(ui_config_file)
     
-    model = ModelController()
-    gpt = GptThread()
+    dir = UI().start(ui_config["tk_config"])
+    
+    print(f'{dir} from main')
+        
+    # model = ModelController()
+    # gpt = GptThread()
 
-    modelThread = threading.Thread(target= lambda: model.work())
-    gptThread = threading.Thread(target = lambda: gpt.work())
+    # modelThread = threading.Thread(target= lambda: model.work())
+    # gptThread = threading.Thread(target = lambda: gpt.work())
 
-    modelThread.start()
-    gptThread.start()
+    # modelThread.start()
+    # gptThread.start()
 
     main()
