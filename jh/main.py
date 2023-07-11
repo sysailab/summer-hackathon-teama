@@ -8,22 +8,22 @@ import time
 
 def main():
     while True:
-        WorkQueue.inputQueue.put("thesis\\thesis1.pdf")
+        WorkQueue.inputQueue.put("./thesis/thesis1.pdf")
         # WorkQueue.inputQueue.put("thesis\\thesis2.pdf")
         # WorkQueue.inputQueue.put("thesis\\no_text.pdf")
         # WorkQueue.inputQueue.put("thesis\\image_thesis.pdf")
         time.sleep(1000)
 
+if __name__ == "__main__":
+    # tk
     
+    model = ModelController()
+    gpt = GptThread()
 
+    modelThread = threading.Thread(target= lambda: model.work())
+    gptThread = threading.Thread(target = lambda: gpt.work())
 
-model = ModelController()
-gpt = GptThread()
+    modelThread.start()
+    gptThread.start()
 
-modelThread = threading.Thread(target= lambda: model.work())
-gptThread = threading.Thread(target = lambda: gpt.work())
-
-modelThread.start()
-gptThread.start()
-
-main()
+    main()
