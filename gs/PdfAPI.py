@@ -44,10 +44,25 @@ class PdfApi():
 
         if response.status_code == 200:
             print('Result:', response.json()['content'])
+            return response.json()['content']
+            
         else:
             print('Status:', response.status_code)
             print('Error:', response.text)
+            
+    def extract_result(self, text):
+        # 패턴을 기준으로 문장 분리
+        split_pattern = ["The title of this thesis is ", "The author of this thesis is ", "The acknowledgements of this thesis are "]
+        for pattern in split_pattern:
+            text = text.replace(pattern, "")
 
-pdfapi = PdfApi()
-s_id = pdfapi.add_adf_via_url('./thesis/thesis1.pdf')
-pdfapi.ask_of_pdf(s_id)
+        # '.'을 기준으로 문장 분리
+        split_text = text.split('.')
+
+        # 리스트에서 공백 제거
+        result = [s.strip() for s in split_text if s]
+        result = [None if i == 'not mentioned in the provided pages' else i for i in result]
+        return result
+        # 결과 출력
+        # for r in result:
+        #     print(f"\"{r}\"")               
