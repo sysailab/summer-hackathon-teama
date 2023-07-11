@@ -27,9 +27,9 @@ class GptThread:
 
             # TODO: GPT API를 통해 데이터 분류
             
-            title, authors, acknowledgements = self.get_paper_details(texts)
+            #title, authors, acknowledgements = self.get_paper_details(texts)
             
-            print(f'title : {title}\nauthors : {authors}\nacknowledements : {acknowledgements}')
+            #print(f'title : {title}\nauthors : {authors}\nacknowledements : {acknowledgements}')
 
             #################################
             time.sleep(3)
